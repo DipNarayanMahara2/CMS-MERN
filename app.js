@@ -23,6 +23,12 @@ app.get("/contact", (req, res) => {
         status: 200,
     })
 })
+app.get("/services", (req, res) => {
+    res.json({
+        message: "Hello World! This is Services Page and I am Learning MERN Stack!",
+        status: 200,
+    })
+})
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
