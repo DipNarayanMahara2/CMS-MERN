@@ -1,0 +1,24 @@
+{
+  "name": "cms-mern",
+  "version": "1.0.0",
+  "description": "Learning MERN",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DipNarayanMahara2/CMS-MERN.git"
+  },
+  "author": "Dip Narayan Mahara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DipNarayanMahara2/CMS-MERN/issues"
+  },
+  "homepage": "https://github.com/DipNarayanMahara2/CMS-MERN#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
