@@ -1,6 +1,21 @@
+// importing express
+const express = require('express');
+const { connectDB } = require('./database/database');
+const app = express();
 
+// connecting to database
+// First way to connect to database
+// const mongoose = require("mongoose");
 
-const app = require('express')();
+// mongoose.connect("mongodb+srv://dipnarayanmahara28:Dipnarayanmahara@project1.b4mntu1.mongodb.net/?retryWrites=true&w=majority&appName=Project1")
+//     .then(() => {
+//         console.log("Database Connected Successfully");
+//     })
+
+// second way to connect to database
+connectDB();
+
+// GET API 
 
 app.get('/', (req, res) => {
     // res.send('Hello World! Learning MERN Stack!');
