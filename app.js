@@ -86,6 +86,49 @@ app.post("/createBlog", async (req, res) => {
 })
 
 
+// Update Blog APi
+app.patch("/updateBlog/:id", async (req, res) => {
+    // getting blog Id
+    const blogId = req.params.id;
+    // getting data form the body
+    const { title, subTitle, description } = req.body;
+
+    // updating blog in database
+    const updateBlog = await Blog.findByIdAndUpdate(blogId, {
+        title: title,
+        subTitle: subTitle,
+        description: description
+    })
+    if (!updateBlog) {
+        res.status(404).json({
+            message: "Blog not found with this ID!"
+        })
+    }
+    else {
+        res.status(200).json({
+            message: "Blog Updated Successfully!"
+        })
+    }
+})
+
+// Delete Blog API
+app.delete("/deleteBlog/:id", async (req, res) => {
+    // getting blog id 
+    const blogId = req.params.id;
+    // deleting blog from database
+    const deleteBlog = await Blog.findByIdAndDelete(blogId);
+    if (deleteBlog) {
+        res.status(200).json({
+            message: "Blog Deleted Successfully!"
+        })
+    } else {
+        res.status(404).json({
+            message: "Blog Not found with this ID!"
+        })
+    }
+})
+
+
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
