@@ -21,8 +21,45 @@ app.get('/', (req, res) => {
     })
 })
 
-// Create Blog API
+// GET API to get all blogs
+app.get("/blogs", async (req, res) => {
 
+    // fetching all blogs from database
+    const blogs = await Blog.find();
+    if (blogs.length === 0) {
+        return res.status(404).json({
+            message: "No Blogs Found!",
+        })
+
+    } else {
+        res.status(200).json({
+            message: "All Blogs fetched successfully!",
+            data: blogs
+        })
+    }
+
+
+})
+
+// GET API to get single blog
+app.get("/blogs/:id", async (req, res) => {
+    // fetching single blog from database
+    const blogId = req.params.id;
+    const blog = await Blog.findById(blogId);
+    if (!blog) {
+        res.status(404).json({
+            message: "Blog NOt found with this ID!",
+        })
+    } else {
+        res.json({
+            message: "Single Blog fetched successfully!",
+            status: 200,
+            data: blog
+        })
+    }
+})
+
+// Create Blog API
 app.post("/createBlog", async (req, res) => {
 
     // fist way to get data from body
