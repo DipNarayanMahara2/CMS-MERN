@@ -7,6 +7,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.set("view engine", "ejs");
+
 // connecting to database
 
 connectDB();
@@ -15,10 +17,11 @@ connectDB();
 
 app.get('/', (req, res) => {
     // res.send('Hello World! Learning MERN Stack!');
-    res.json({
-        message: "Hello World! This is Home Page and I am Learning MERN Stack!",
-        status: 200,
-    })
+    res.render("home")
+    // res.json({
+    //     message: "Hello World! This is Home Page and I am Learning MERN Stack!",
+    //     status: 200,
+    // })
 })
 
 // GET API to get all blogs
