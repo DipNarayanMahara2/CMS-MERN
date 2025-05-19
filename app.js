@@ -1,8 +1,15 @@
 // importing express
 const express = require('express');
+const cors = require("cors")
 const { connectDB } = require('./database/database');
 const Blog = require('./Model/BlogModal');
 const app = express();
+
+app.use(cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    credentials: true
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -79,8 +86,7 @@ app.post("/createBlog", async (req, res) => {
         subTitle: subTitle,
         description: description,
     })
-    res.json({
-        status: 201,
+    res.status(201).json({
         message: "Blog Created Successfully!"
     })
 })
